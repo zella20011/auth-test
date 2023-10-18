@@ -1,21 +1,80 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Auth page</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Auth page</title>
+
+  <!--  Custom font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- TailwindCss -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- styled -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <section>
-    <div class="container">
-      <form>
-        <input type="text">
-        <input type="text">
-        <button></button>
+<body class="font-['Manrope'] text-[#0A335C]">
+  <section class="flex min-h-full flex-col justify-center px-5 py-2.5 sm:py-5">
+    <!--  logo  -->
+    <div class="mb-[50px] sm:mx-auto sm:w-full sm:max-w-[550px]">
+      <img class="mx-auto w-[150px]" src="./images/logo.svg" alt="logo">
+    </div>
+
+    <!--  auth form  -->
+    <div class="sm:mx-auto sm:w-full sm:max-w-[550px]">
+      <!--   image   -->
+      <div class="mb-[15px] sm:mb-5 mx-auto w-[100px]">
+        <img class="mx-auto w-full" src="./images/image.png" alt="logo">
+      </div>
+
+      <!-- Title -->
+      <h1 class="mb-[15px] sm:mb-5 text-5xl sm:text-[64px] font-extrabold text-center tracking-[-0.6px]">Увійти</h1>
+
+      <!-- Google button -->
+      <div class="mb-[15px] sm:mb-5">
+        <button class="w-full py-2.5 px-5 border-2 border-solid border-[#00ACFF] rounded-[10px] shadow-[0_4px_0_0_#00ACFF] hover:shadow-none transition-shadow text-xl leading-normal font-bold google-button">Google</button>
+      </div>
+
+      <p class="mb-[15px] sm:mb-5 text-center text-xl leading-normal font-medium">або</p>
+
+      <!-- auth form -->
+      <form class="mb-[15px] sm:mb-5" action="#" method="POST">
+        <!-- Email -->
+        <div class="wrapper mb-[15px] sm:mb-5">
+          <div class="input-group">
+            <input id="email" class="input-group__input font-medium text-[17px] leading-6 sm:text-xl sm:leading-normal" name="email" type="email" autocomplete="email">
+            <label for="email" class="input-group__label font-medium text-[17px] leading-6 sm:text-xl sm:leading-normal">Ел. пошта</label>
+          </div>
+          <p id="email-error" class="wrapper__error text-[#FF3B30] text-sm leading-[18px] sm:text-base sm:leading-[22px] font-medium">Вкажіть вашу ел. пошту</p>
+        </div>
+
+        <!-- Password -->
+        <div class="wrapper mb-[15px] sm:mb-5">
+          <div class="input-group input-group_no-margin">
+            <input id="password" class="input-group__input font-medium text-[17px] leading-6 sm:text-xl sm:leading-normal" name="password" type="password" autocomplete="current-password">
+            <label for="password" class="input-group__label font-medium text-[17px] leading-6 sm:text-xl sm:leading-normal">Пароль</label>
+          </div>
+          <a href="#" class="wrapper__forgot text-sm leading-[18px] sm:text-base sm:leading-[22px] font-medium underline">
+            Не пам'ятаєш пароль?
+          </a>
+        </div>
+
+        <!-- auth button -->
+        <button id="login" class="w-full py-2.5 px-5 border-2 border-solid border-[#FC0] rounded-[10px] shadow-[0_4px_0_0_#FC0] hover:shadow-none transition-shadow text-[17px] leading-[25px] sm:text-xl sm:leading-normal font-bold bg-[#FFEB99]">Увійти</button>
       </form>
+
+      <p class="text-center text-[17px] leading-6 sm:text-xl sm:leading-normal font-medium">
+        Ще не з нами?
+        <a href="#" class="font-bold underline">Зареєструватися</a>
+      </p>
     </div>
   </section>
 
