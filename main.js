@@ -4,36 +4,47 @@ const email = document.getElementById('email')
 const password = document.getElementById('password')
 const loginButton = document.getElementById('login')
 
-function AddLabelClass(element, type) {
-    element.addEventListener('focusout', () => {
-        const children = element.parentElement.children
-        let label
-
-        for (const child of children) {
-            if (child.tagName === 'LABEL') {
-                label = child
-            }
+function getChildren(children) {
+    for (const child of children) {
+        if (child.tagName === 'LABEL') {
+            return child;
         }
-
-        if (element.value) {
-            label.classList.add('input-group__label_active')
-
-            if (type === 'email' && !element.value.match(mailformat)) {
-                element.classList.add('input-group__input_error');
-                document.getElementById('email-error').style.display = 'block';
-            }
-            else {
-                element.classList.remove('input-group__input_error');
-                document.getElementById('email-error').style.display = 'none';
-            }
-        } else {
-            label.classList.remove('input-group__label_active')
-        }
-    })
+    }
 }
 
-AddLabelClass(email, 'email')
-AddLabelClass(password, 'password')
+email.addEventListener('focusout', () => {
+    const label = getChildren(email.parentElement.children);
+
+    if (email.value) {
+        label.classList.add('input-group__label_active');
+
+        if (!email.value.match(mailformat)) {
+            email.classList.add('input-group__input_error');
+            document.getElementById('email-error').style.display = 'block';
+        }
+        else {
+            email.classList.remove('input-group__input_error');
+            document.getElementById('email-error').style.display = 'none';
+        }
+    } else {
+        label.classList.remove('input-group__label_active');
+        email.classList.add('input-group__input_error');
+        document.getElementById('email-error').style.display = 'block';
+    }
+});
+password.addEventListener('focusout', () => {
+    const label = getChildren(password.parentElement.children)
+
+    if (password.value) {
+        label.classList.add('input-group__label_active')
+        password.classList.remove('input-group__input_error');
+        document.getElementById('password-error').style.display = 'none';
+    } else {
+        label.classList.remove('input-group__label_active')
+        password.classList.add('input-group__input_error');
+        document.getElementById('password-error').style.display = 'block';
+    }
+});
 
 loginButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -41,9 +52,11 @@ loginButton.addEventListener('click', (event) => {
     if (!email.value) {
         email.classList.add('input-group__input_error');
         document.getElementById('email-error').style.display = 'block';
-    } else {
-        email.classList.remove('input-group__input_error');
-        document.getElementById('email-error').style.display = 'none';
     }
-})
+
+    if (!password.value) {
+        password.classList.add('input-group__input_error');
+        document.getElementById('password-error').style.display = 'block';
+    }
+});
 
